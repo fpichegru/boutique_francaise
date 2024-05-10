@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container my-5">
+    
+       <h1 class="mb-4">Espace membre</h1> 
+     
+           <div class="row">
+        <div class="col-md-3">  {% include 'account/_menu.html.twig' %}</div>
+        <div class="col-md-9">   
+          <h5 class="mb-3">Mes adresses</h5>
+         
+         {# on va faire une explosion du formulaire pour gérer les classes des inputs indépendamment #}
+         {{form_start(adressForm)}}
+            <div class="row">
+                   <div class="col-md-6">{{ form_row(adressForm.firstname)}}</div>
+                   <div class="col-md-6">{{ form_row(adressForm.lastname)}}</div>
+                   <div class="col-md-6">{{ form_row(adressForm.adress)}}</div>
+                   <div class="col-md-6">{{ form_row(adressForm.postal)}}</div>
+                   <div class="col-md-6">{{ form_row(adressForm.city)}}</div>
+                   <div class="col-md-6">{{ form_row(adressForm.country)}}</div>
+                   <div class="col-md-6">{{ form_row(adressForm.phone)}}</div>
+            </div>    
+         {{form_end(adressForm)}}
+      </div>
+       
+       </div> 
+
+    </div>
+
+{% endblock %}

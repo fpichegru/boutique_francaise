@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container my-5">
+    
+       <h1 class="mb-4">Espace membre</h1> 
+     
+           <div class="row">
+        <div class="col-md-3">  {% include 'account/_menu.html.twig' %}</div>
+        <div class="col-md-9">  
+            
+            <div class="d-flex justify-content-between">
+                <h5 class="mb-3">Mes adresses</h5>
+                <a href="{{ path ('app_account_adress_form')}}" class="btn btn-success">Ajouter une adresse</a>
+            </div>
+            {# j'ai accès à mes adresses depuis app.user #}
+            {# {{ dump(app.user.adresses)}} #}
+
+
+                {% if  app.user.adresses | length == 0 %}
+
+                   <p> Aucune adresse n'a encore été enregistrée. </p>
+
+                {% else %}
+
+                    <div class="row"> 
+                        {% for adress in app.user.adresses %}
+                        <div class="col-md-4 mt-4">
+                            <div class="bg-light p-2">
+                                <strong>{{ adress.firstname}} {{ adress.lastname}}</strong><br/>
+                                {{ adress.adress}} <br/>
+                                {{ adress.postal}}
+                                {{ adress.city}},  {{ adress.country}} <br/>
+                                {{ adress.phone}}<br/>
+                                <div class="my-3 d-flex justify-content-around">
+                                    <a href="{{ path('app_account_adress_form', {id: adress.id})}}" class="small text-secondary" >Éditer</a>  
+                                    <a href="{{ path('app_account_adress_delete', {id: adress.id})}}" class="small text-secondary" >Supprimer</a>  
+                                </div>
+                            </div>
+                        </div> 
+                        {% endfor%}   
+                    </div>
+            {% endif %}
+          
+              
+           
+      </div>
+       
+       </div> 
+
+    </div>
+
+{% endblock %}

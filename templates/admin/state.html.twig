@@ -1,0 +1,14 @@
+<!--     
+        1 : en attente de paiement
+        2 : paiement validé
+        3 : Expédié
+-->
+
+<!-- je récupère la valeur du champs statut -->
+{% if field.value == 1 %}
+    <span class="badge text-bg-secondary">En attente de paiement</span>
+{% elseif field.value== 2 %}
+    <span class="badge text-bg-primary">Paiement validé</span>
+{% elseif field.value== 3 %}
+    <span class="badge text-bg-success">Expédié</span>
+{% endif %}
